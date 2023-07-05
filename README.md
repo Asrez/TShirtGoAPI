@@ -209,7 +209,52 @@ Example Response:
 ## Database PostgreSQL
 
 ```sql
+-- Table: Categories
+CREATE TABLE Categories (
+  category_id INT PRIMARY KEY AUTO_INCREMENT,
+  category_name VARCHAR(255)
+);
 
+-- Table: Brands
+CREATE TABLE Brands (
+  brand_id INT PRIMARY KEY AUTO_INCREMENT,
+  brand_name VARCHAR(255)
+);
+
+-- Table: Sizes
+CREATE TABLE Sizes (
+  size_id INT PRIMARY KEY AUTO_INCREMENT,
+  size_name VARCHAR(50)
+);
+
+-- Table: Colors
+CREATE TABLE Colors (
+  color_id INT PRIMARY KEY AUTO_INCREMENT,
+  color_name VARCHAR(50)
+);
+
+-- Table: Materials
+CREATE TABLE Materials (
+  material_id INT PRIMARY KEY AUTO_INCREMENT,
+  material_name VARCHAR(50)
+);
+
+-- Table: Products
+CREATE TABLE Products (
+  product_id INT PRIMARY KEY AUTO_INCREMENT,
+  product_name VARCHAR(255),
+  category_id INT,
+  brand_id INT,
+  size_id INT,
+  color_id INT,
+  material_id INT,
+  price DECIMAL(10, 2),
+  FOREIGN KEY (category_id) REFERENCES Categories(category_id),
+  FOREIGN KEY (brand_id) REFERENCES Brands(brand_id),
+  FOREIGN KEY (size_id) REFERENCES Sizes(size_id),
+  FOREIGN KEY (color_id) REFERENCES Colors(color_id),
+  FOREIGN KEY (material_id) REFERENCES Materials(material_id)
+);
 ```
 
 Copyright 2023, Max Base
