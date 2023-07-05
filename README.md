@@ -150,18 +150,14 @@ Example Response:
 
 Endpoint: `GET /products`
 
-Description: Retrieve a list of available T-shirt products.
-
-Endpoint: GET /products
-
 Description: Retrieve a list of available T-shirt products, with optional filters for brand, color, size, and material.
 
 Parameters:
 
-- `brand (optional)`: Filter products by brand.
-- `color (optional)`: Filter products by color.
-- `size (optional)`: Filter products by size.
-- `material (optional)`: Filter products by material.
+- `brand` (optional): Filter products by brand.
+- `color` (optional) Filter products by color.
+- `size` (optional): Filter products by size.
+- `material` (optional): Filter products by material.
 
 Example Usage:
 
