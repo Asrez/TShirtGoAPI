@@ -206,4 +206,10 @@ Example Response:
 ]
 ```
 
+## Database PostgreSQL
+
+```sql
+
+```
+
 Copyright 2023, Max Base
