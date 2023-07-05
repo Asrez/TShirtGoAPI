@@ -1,7 +1,15 @@
 # T-Shirt Go API
 
+The T-Shirt Go API is a web-based application programming interface (API) designed to provide access to a wide range of T-shirt-related information and functionalities. The API enables developers to retrieve information about T-shirt categories, brands, sizes, colors, materials, and products.
 
-# Endpoints
+## T-Shirt Key Features
+
+- **T-Shirt Categories:** Retrieve a list of available T-shirt categories, such as men's T-shirts, women's T-shirts, and kids' T-shirts. This helps users navigate and filter T-shirt options effectively.
+- **T-Shirt Brands:** Obtain a list of T-shirt brands, enabling users to identify their preferred brand options.
+- **T-Shirt Sizes:** Retrieve a list of available T-shirt sizes, including small, medium, large, etc. This assists users in selecting the appropriate size for their desired T-shirt.
+- **T-Shirt Colors:** Access a list of available T-shirt colors, allowing users to choose T-shirts that match their preferences.
+- **T-Shirt Materials:** Retrieve information about different T-shirt materials, such as cotton, polyester, and blends. This helps users make informed decisions based on their preferred fabric.
+- **T-Shirt Products:** Obtain a list of available T-shirt products, including details such as the T-shirt's name, category, brand, size, color, material, and price. Users can browse through the available options and make selections based on their preferences.
 
 ## API Endpoints
 
@@ -15,7 +23,7 @@
 ## API Examples
 ### Get T-shirt Categories:
 
-Endpoint: GET /categories
+Endpoint: `GET /categories`
 
 Description: Retrieve a list of available T-shirt categories.
 
@@ -40,7 +48,7 @@ Example Response:
 
 ### Get T-shirt Brands:
 
-Endpoint: GET /brands
+Endpoint: `GET /brands`
 
 Description: Retrieve a list of available T-shirt brands.
 
@@ -65,7 +73,7 @@ Example Response:
 
 ### Get T-shirt Sizes:
 
-Endpoint: GET /sizes
+Endpoint: `GET /sizes`
 
 Description: Retrieve a list of available T-shirt sizes.
 
@@ -90,7 +98,7 @@ Example Response:
 
 ### Get T-shirt Colors:
 
-Endpoint: GET /colors
+Endpoint: `GET /colors`
 
 Description: Retrieve a list of available T-shirt colors.
 
@@ -115,7 +123,7 @@ Example Response:
 
 ### Get T-shirt Materials:
 
-Endpoint: GET /materials
+Endpoint: `GET /materials`
 
 Description: Retrieve a list of available T-shirt materials.
 
@@ -140,7 +148,7 @@ Example Response:
 
 ### Get T-shirt Products:
 
-Endpoint: GET /products
+Endpoint: `GET /products`
 
 Description: Retrieve a list of available T-shirt products.
 
