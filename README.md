@@ -152,6 +152,23 @@ Endpoint: `GET /products`
 
 Description: Retrieve a list of available T-shirt products.
 
+Endpoint: GET /products
+
+Description: Retrieve a list of available T-shirt products, with optional filters for brand, color, size, and material.
+
+Parameters:
+
+- `brand (optional)`: Filter products by brand.
+- `color (optional)`: Filter products by color.
+- `size (optional)`: Filter products by size.
+- `material (optional)`: Filter products by material.
+
+Example Usage:
+
+- `GET /products?brand=Nike`: Retrieve T-shirt products of the brand "Nike".
+- `GET /products?color=Red&size=Large`: Retrieve T-shirt products that are red and large in size.
+- `GET /products?brand=Adidas&color=Blue&size=Medium&material=Cotton`: Retrieve T-shirt products of the brand "Adidas" that are blue, medium-sized, and made of cotton.
+
 Example Response:
 
 ```json
