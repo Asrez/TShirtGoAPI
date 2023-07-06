@@ -3,6 +3,7 @@ package handlers
 import (
 	"net/http"
 
+	helper "github.com/Asrez/TShirtGoAPI/api/helpers"
 	"github.com/Asrez/TShirtGoAPI/data/db"
 	"github.com/Asrez/TShirtGoAPI/data/models"
 	"github.com/gin-gonic/gin"
@@ -31,8 +32,8 @@ func (c *Brands) Brands(ctx *gin.Context) {
 		return
 	}
 
-	ctx.JSON(http.StatusOK, gin.H{
+	ctx.JSON(http.StatusOK,helper.GenerateBaseResponse(gin.H{
 		"result": "success",
 		"data":   brands,
-	})
+	} , true ,200))
 }
