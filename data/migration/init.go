@@ -40,7 +40,7 @@ func createTables(database *gorm.DB){
 	tables = addNewTable(database , models.Sizes{} , tables)
 	tables = addNewTable(database , models.Colors{} , tables)
 	tables = addNewTable(database , models.Materials{} , tables)
-	tables = addNewTable(database , models.Product{} ,tables)
+	tables = addNewTable(database , models.Products{} ,tables)
 
 
 	err := database.Migrator().CreateTable(tables...)
@@ -69,9 +69,9 @@ func CreateDataWithFaker(model interface{}, database *gorm.DB) {
 	}
 }
 
-func CreateProductDataWithFaker(database *gorm.DB) {
+func CreateProductsDataWithFaker(database *gorm.DB) {
 	for i := 0; i < 10; i++ {
-		product := models.Product{
+		products := models.Products{
 			BaseTable: models.BaseTable{
 				Id:   i + 1,
 				Name: faker.Word(),
@@ -83,7 +83,7 @@ func CreateProductDataWithFaker(database *gorm.DB) {
 			MaterialID:  rand.Intn(10) + 1,
 			Price:       rand.Float64() * 100,
 		}
-		database.Create(&product)
+		database.Create(&products)
 	}
 }
 
@@ -116,8 +116,8 @@ func ExecuteDataFakerIfEmpty(database *gorm.DB) {
 		CreateDataWithFaker(models.Materials{}, database)
 	}
 
-	database.Model(&models.Product{}).Count(&count)
+	database.Model(&models.Products{}).Count(&count)
 	if count == 0 {
-		CreateProductDataWithFaker(database)
+		CreateProductsDataWithFaker(database)
 	}
 }
