@@ -5,10 +5,11 @@ import (
 
 	"github.com/Asrez/TShirtGoAPI/api"
 	"github.com/Asrez/TShirtGoAPI/data/db"
+	"github.com/Asrez/TShirtGoAPI/config"
 )
 func main(){
-	
-	err := db.InitDb()
+	cfg := config.GetConfig()
+	err := db.InitDb(cfg)
 	defer db.CloseDb()
 
 	if err != nil {
