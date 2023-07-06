@@ -24,7 +24,7 @@ type PostgresConfig struct {
 	User string
 	Password string
 	DbName string
-	SSLMode bool
+	SSLMode string
 }
 
 type LoggerConfig struct {

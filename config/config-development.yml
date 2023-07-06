@@ -10,8 +10,8 @@ cors :
 
 postgres :
   host : localhost
-  port : 5432
+  port : 5433
   user : postgres
   password : sH1382@@
   dbName : TShirt
-  sslMode : false
+  sslMode : disable
