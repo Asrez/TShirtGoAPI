@@ -11,6 +11,7 @@ import (
 type Config struct {
 	Server ServerConfig
 	Postgres PostgresConfig
+	Logger LoggerConfig
 }
 
 type ServerConfig struct {
@@ -24,6 +25,13 @@ type PostgresConfig struct {
 	Password string
 	DbName string
 	SSLMode bool
+}
+
+type LoggerConfig struct {
+	FilePath string
+	Encoding string
+	Level string
+	Logger string
 }
 
 func GetConfig() *Config {
