@@ -5,7 +5,7 @@ import (
 	"github.com/Asrez/TShirtGoAPI/data/db"
 	"github.com/Asrez/TShirtGoAPI/config"
 	"github.com/Asrez/TShirtGoAPI/pkg/logging"
-	"github.com/Asrez/TShirtGoAPI/db/migration"
+	"github.com/Asrez/TShirtGoAPI/data/migration"
 )
 func main(){
 	cfg := config.GetConfig()
