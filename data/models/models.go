@@ -6,8 +6,8 @@ package models
 type (
 
 	BaseTable struct {
-		id int
-		name string
+		Id int
+		Name string
 	}
 
 	Categories struct {
@@ -32,5 +32,15 @@ type (
 	Materials struct {
 		BaseModel
 		BaseTable
+	}
+	Product struct {
+		BaseModel
+		BaseTable
+		CategoryID  int
+		BrandID     int
+		SizeID      int
+		ColorID     int
+		MaterialID  int
+		Price       float64
 	}
 )

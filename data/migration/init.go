@@ -35,8 +35,7 @@ func createTables(database *gorm.DB){
 	tables = addNewTable(database , models.Sizes{} , tables)
 	tables = addNewTable(database , models.Colors{} , tables)
 	tables = addNewTable(database , models.Materials{} , tables)
-
-
+	tables = addNewTable(database , models.Product{} ,tables)
 
 
 	err := database.Migrator().CreateTable(tables...)
