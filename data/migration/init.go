@@ -19,12 +19,7 @@ var logger = logging.NewLogger(config.GetConfig())
 func Up(){
 	database := db.GetDb()
 	createTables(database)
-	CreateDataWithFaker(models.Categories{} , database)
-	CreateDataWithFaker(models.Brands{} , database)
-	CreateDataWithFaker(models.Sizes{} , database)
-	CreateDataWithFaker(models.Colors{} , database)
-	CreateDataWithFaker(models.Materials{} , database)
-	CreateProductDataWithFaker(database)
+	ExecuteDataFakerIfEmpty(database)
 	logger.Info(logging.Postgres, logging.Migration, "UP", nil)
 
 }
@@ -89,5 +84,40 @@ func CreateProductDataWithFaker(database *gorm.DB) {
 			Price:       rand.Float64() * 100,
 		}
 		database.Create(&product)
+	}
+}
+
+
+func ExecuteDataFakerIfEmpty(database *gorm.DB) {
+	var count int64
+
+	database.Model(&models.Categories{}).Count(&count)
+	if count == 0 {
+		CreateDataWithFaker(models.Categories{}, database)
+	}
+
+	database.Model(&models.Brands{}).Count(&count)
+	if count == 0 {
+		CreateDataWithFaker(models.Brands{}, database)
+	}
+
+	database.Model(&models.Sizes{}).Count(&count)
+	if count == 0 {
+		CreateDataWithFaker(models.Sizes{}, database)
+	}
+
+	database.Model(&models.Colors{}).Count(&count)
+	if count == 0 {
+		CreateDataWithFaker(models.Colors{}, database)
+	}
+
+	database.Model(&models.Materials{}).Count(&count)
+	if count == 0 {
+		CreateDataWithFaker(models.Materials{}, database)
+	}
+
+	database.Model(&models.Product{}).Count(&count)
+	if count == 0 {
+		CreateProductDataWithFaker(database)
 	}
 }
