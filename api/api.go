@@ -28,6 +28,9 @@ func InitServer(){
 
 		materials := v1.Group("/materials")
 		routes.BrandsRoute(materials)
+
+		products := v1.Group("/products")
+		routes.ProductsRoute(products)
 	}
 
 	r.Run(fmt.Sprintf(":%s", config.Server.Port))
