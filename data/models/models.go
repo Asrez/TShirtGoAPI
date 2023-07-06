@@ -33,7 +33,7 @@ type (
 		BaseModel
 		BaseTable
 	}
-	Product struct {
+	Products struct {
 		BaseModel
 		BaseTable
 		CategoryID  int
@@ -42,5 +42,11 @@ type (
 		ColorID     int
 		MaterialID  int
 		Price       float64
+
+		Category  Categories `gorm:"foreignKey:CategoryID"`
+		Brand     Brands     `gorm:"foreignKey:BrandID"`
+		Size      Sizes      `gorm:"foreignKey:SizeID"`
+		Color     Colors     `gorm:"foreignKey:ColorID"`
+		Material  Materials  `gorm:"foreignKey:MaterialID"`
 	}
 )
