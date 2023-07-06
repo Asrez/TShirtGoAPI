@@ -19,6 +19,15 @@ func InitServer(){
 		
 		brands := v1.Group("/brands")
 		routes.BrandsRoute(brands)
+
+		sizes := v1.Group("/sizes")
+		routes.BrandsRoute(sizes)
+
+		colors := v1.Group("/colors")
+		routes.ColorsRoute(colors)
+
+		materials := v1.Group("/materials")
+		routes.BrandsRoute(materials)
 	}
 
 	r.Run(fmt.Sprintf(":%s", config.Server.Port))
