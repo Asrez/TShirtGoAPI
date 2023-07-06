@@ -1,10 +1,14 @@
 package migration
 
 import (
+	"math/rand"
+	"reflect"
+
 	"github.com/Asrez/TShirtGoAPI/config"
 	"github.com/Asrez/TShirtGoAPI/data/db"
 	"github.com/Asrez/TShirtGoAPI/data/models"
 	"github.com/Asrez/TShirtGoAPI/pkg/logging"
+	"github.com/bxcodec/faker/v3"
 	"gorm.io/gorm"
 )
 
@@ -15,6 +19,12 @@ var logger = logging.NewLogger(config.GetConfig())
 func Up(){
 	database := db.GetDb()
 	createTables(database)
+	CreateDataWithFaker(models.Categories{} , database)
+	CreateDataWithFaker(models.Brands{} , database)
+	CreateDataWithFaker(models.Sizes{} , database)
+	CreateDataWithFaker(models.Colors{} , database)
+	CreateDataWithFaker(models.Materials{} , database)
+	CreateProductDataWithFaker(database)
 	logger.Info(logging.Postgres, logging.Migration, "UP", nil)
 
 }
@@ -44,4 +54,40 @@ func createTables(database *gorm.DB){
 	}
 	logger.Info(logging.Postgres, logging.Migration, "tables created", nil)
 
+}
+
+func CreateDataWithFaker(model interface{}, database *gorm.DB) {
+	for i := 0; i < 10; i++ {
+		record := reflect.New(reflect.TypeOf(model)).Elem()
+
+		idField := record.FieldByName("ID")
+		if idField.IsValid() && idField.CanSet() && idField.Kind() == reflect.Int {
+			idField.SetInt(int64(i + 1))
+		}
+
+		nameField := record.FieldByName("Name")
+		if nameField.IsValid() && nameField.CanSet() && nameField.Kind() == reflect.String {
+			nameField.SetString(faker.Word())
+		}
+
+		database.Create(record.Addr().Interface())
+	}
+}
+
+func CreateProductDataWithFaker(database *gorm.DB) {
+	for i := 0; i < 10; i++ {
+		product := models.Product{
+			BaseTable: models.BaseTable{
+				Id:   i + 1,
+				Name: faker.Word(),
+			},
+			CategoryID:  rand.Intn(10) + 1,
+			BrandID:     rand.Intn(10) + 1,
+			SizeID:      rand.Intn(10) + 1,
+			ColorID:     rand.Intn(10) + 1,
+			MaterialID:  rand.Intn(10) + 1,
+			Price:       rand.Float64() * 100,
+		}
+		database.Create(&product)
+	}
 }
