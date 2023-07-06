@@ -5,6 +5,7 @@ import (
 	"github.com/Asrez/TShirtGoAPI/data/db"
 	"github.com/Asrez/TShirtGoAPI/config"
 	"github.com/Asrez/TShirtGoAPI/pkg/logging"
+	"github.com/Asrez/TShirtGoAPI/db/migration"
 )
 func main(){
 	cfg := config.GetConfig()
@@ -16,6 +17,6 @@ func main(){
 		// log.Fatal("Connection to database failed error :" , err)
 		logger.Fatal(logging.Postgres , logging.Startup , err.Error() , nil)
 	}
-
+	migration.Up()
 	api.InitServer()
 }
