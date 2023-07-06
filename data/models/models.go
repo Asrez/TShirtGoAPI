@@ -6,8 +6,8 @@ package models
 type (
 
 	BaseTable struct {
-		Id int
-		Name string
+		Id int `gorm:"primarykey"`
+		Name string `gorm:"not null"`
 	}
 
 	Categories struct {
