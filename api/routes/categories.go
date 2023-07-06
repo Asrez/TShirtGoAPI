@@ -9,6 +9,5 @@ import (
 
 func CategoriesRoute(r *gin.RouterGroup){
 	h := handlers.NewCategoriesHandler()
-
 	r.GET("/",h.Categories)
 }

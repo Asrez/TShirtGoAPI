@@ -2,25 +2,26 @@ package handlers
 
 import (
 	"net/http"
+
 	"github.com/Asrez/TShirtGoAPI/data/db"
 	"github.com/Asrez/TShirtGoAPI/data/models"
 	"github.com/gin-gonic/gin"
 )
 
 
-type Categories struct {
+type Brands struct {
 
 }
 
-func NewCategoriesHandler() *Categories{
-	return &Categories{}
+func NewBrandsHandler() *Brands{
+	return &Brands{}
 }
 
-func (c *Categories) Categories(ctx *gin.Context) {
+func (c *Brands) Brands(ctx *gin.Context) {
 	db := db.GetDb()
 
-	var Categories []models.Categories
-	result := db.Find(&Categories)
+	var brands []models.Brands
+	result := db.Find(&brands)
 	if result.Error != nil {
 		// Handle the error if any
 		ctx.JSON(http.StatusInternalServerError, gin.H{
@@ -32,6 +33,6 @@ func (c *Categories) Categories(ctx *gin.Context) {
 
 	ctx.JSON(http.StatusOK, gin.H{
 		"result": "success",
-		"data":   Categories,
+		"data":   brands,
 	})
 }
