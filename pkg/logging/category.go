@@ -10,6 +10,7 @@ const (
 	General Category = "General"
 	Internal Category = "Internal"
 	Postgres Category = "Postgres"
+	Redis Category = "Redis"
 	Validation Category = "Validation"
 	RequestResponse Category = "RequestResponse"
 )
