@@ -1,10 +1,8 @@
 package cache
 
 import (
-	"encoding/json"
 	"fmt"
 	"time"
-
 	"github.com/Asrez/TShirtGoAPI/config"
 	"github.com/go-redis/redis/v7"
 )
@@ -42,24 +40,37 @@ func CloseRedis() {
 }
 
 
-func Set[T any](c *redis.Client, key string, value T, duration time.Duration) error {
-	v, err := json.Marshal(value)
-	if err != nil {
-		return err
-	}
-	return c.Set(key, v, duration).Err()
-}
+// func Set[T any](c *redis.Client, key string, value T, duration time.Duration) error {
+// 	v, err := json.Marshal(value)
+// 	if err != nil {
+// 		return err
+// 	}
+// 	return c.Set(key, v, duration).Err()
+// }
 
 
-func Get[T any](c *redis.Client, key string) (T, error) {
-	var dest T = *new(T)
-	v, err := c.Get(key).Result()
+// func Get[T any](c *redis.Client, key string) (T, error) {
+// 	var dest T = *new(T)
+// 	v, err := c.Get(key).Result()
+// 	if err != nil {
+// 		return dest, err
+// 	}
+// 	err = json.Unmarshal([]byte(v), &dest)
+// 	if err != nil {
+// 		return dest, err
+// 	}
+// 	return dest, nil
+// }
+
+
+func SetString(c *redis.Client, key string, value any, duration time.Duration) error {
+	return c.Set(key, value, duration).Err()
+  }
+  
+func GetString(c *redis.Client, key string) (string, error) {
+	val, err := c.Get(key).Result()
 	if err != nil {
-		return dest, err
+	  return "", err
 	}
-	err = json.Unmarshal([]byte(v), &dest)
-	if err != nil {
-		return dest, err
-	}
-	return dest, nil
+	return val, nil
 }
